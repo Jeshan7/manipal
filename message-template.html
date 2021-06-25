@@ -24,7 +24,7 @@
       const accessKey = "u$reb5f627b2df819804bed23221fe5b0b8";
       const secretKey = "8364b4d6b92ac406c3276775f8b5bd51f9fa2f7d";
       const leadID = "3fb3f720-14d9-4ddf-8806-aa851ab6df04";
-      // const leadID=@{Global:Lead:-1:ProspectID,}
+      // const leadID= @{Global:Lead:-1:ProspectID,};
       // let leadID="";
       // if (typeof(Storage) !== "undefined") {
       //     if(localStorage.getItem("LEAD_ID")){
@@ -255,13 +255,14 @@
         letter-spacing: 0px;
         color: #e36c06;
         font-size: 16px;
-        width: 60%;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        width: 55%;
         cursor: pointer;
         position: relative;
         display: inline-block;
         padding-left: 5px;
+      }
+      .link-table-second-container:hover {
+        text-decoration: underline;
       }
       .link-table-second-container .tooltiptext {
         visibility: hidden;
@@ -270,14 +271,16 @@
         color: #fff;
         text-align: center;
         border-radius: 6px;
-        padding: 5px 5px;
+        padding: 8px;
         white-space: pre-line;
         position: absolute;
         z-index: 100;
         top: 150%;
-        left: 50%;
+        left: 5%;
         margin-left: -60px;
         word-wrap: break-word;
+        box-shadow: 0px 3px 6px #00000029;
+        font: normal normal normal 14px/18px Lato;
       }
 
       .link-table-second-container .tooltiptext::after {
@@ -288,11 +291,33 @@
         margin-left: -5px;
         border-width: 5px;
         border-style: solid;
+        box-shadow: 0px 3px 6px #00000029;
         border-color: transparent transparent #4b4b4b transparent;
       }
 
       .link-table-second-container:hover .tooltiptext {
         visibility: visible;
+      }
+      .email-content {
+        display: block;
+        width: 100%;
+        height: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .email-content:hover {
+        text-decoration: underline;
+      }
+
+      #Email-btn {
+        outline: none;
+      }
+      #SMS-btn {
+        outline: none;
+      }
+      #WhatsApp-btn {
+        outline: none;
       }
     </style>
   </head>
@@ -300,9 +325,7 @@
     <div id="myModal" class="modal">
       <div class="modal-content">
         <div class="modal-header">
-          <div class="modal-header-text" id="modal-header-text-id"> 
-            SMS
-          </div>
+          <div class="modal-header-text" id="modal-header-text-id">SMS</div>
           <div class="close">&times;</div>
         </div>
         <div class="modal-body-text">
@@ -442,14 +465,16 @@
                                                   ? dataMap.Data[2].Value
                                                   : ""
                                                 : ""
-                                            }</span>   
+                                            }</span>  
+                                            <span class="email-content"> 
                                                 ${
                                                   dataMap.Data
                                                     ? dataMap.Data[2]
                                                       ? dataMap.Data[2].Value
                                                       : ""
                                                     : ""
-                                                }</span>
+                                                }</span> 
+                                                </span>
                                     </div>
                                 </div>
                                 `;
@@ -652,7 +677,7 @@
                       )}</span>
                                            </div>
                                            <div class="header-table-third-container" id="header-table-third-container-id-${index}">
-                                                   <span class="lable-table-second-container">Whatsapphaving Template : </span>
+                                                   <span class="lable-table-second-container">Whatsapp having Template : </span>
                                                    <span class="link-table-second-container" onclick="modalFunction('whatsApp${index}','whatsApp')" id="link-table-second-container-id-${index}" >
                                                     <span style="display: none;" id="whatsApp${index}">${msg}</span>View Template</span>
                                            </div>
@@ -689,9 +714,9 @@
               var showMessageData = message.split(" : ")[1];
               document.getElementById("messageBox").textContent =
                 showMessageData;
-            //   document.getElementById(
-            //     "modal-header-text-id"
-            //   ).textContent = `WhatsApp`;
+              //   document.getElementById(
+              //     "modal-header-text-id"
+              //   ).textContent = `WhatsApp`;
               const element = document.getElementById("modal-header-text-id");
               element.innerHTML = `<i class="fab fa-whatsapp"></i> WhatsApp`;
             }
