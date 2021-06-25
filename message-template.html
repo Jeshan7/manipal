@@ -1,447 +1,434 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link
-      rel="stylesheet"
-      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-      crossorigin="anonymous"
-    />
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="/js/jquery.easing.1.3.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.0/moment.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-      const accessKey = "u$reb5f627b2df819804bed23221fe5b0b8";
-      const secretKey = "8364b4d6b92ac406c3276775f8b5bd51f9fa2f7d";
-      const leadID = "3fb3f720-14d9-4ddf-8806-aa851ab6df04";
-      // const leadID= @{Global:Lead:-1:ProspectID,};
-      // let leadID="";
-      // if (typeof(Storage) !== "undefined") {
-      //     if(localStorage.getItem("LEAD_ID")){
-      //         leadID=localStorage.getItem("LEAD_ID")
-      //     }
-      // }
-    </script>
-    <style type="text/css">
-      /* width */
-      ::-webkit-scrollbar {
-        width: 6px;
-      }
-      /* Handle */
-      ::-webkit-scrollbar-thumb {
-        background: #888;
-      }
+<link
+  rel="stylesheet"
+  href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+  integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+  crossorigin="anonymous"
+/>
+<script src="js/jquery.min.js"></script>
+<script src="js/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/jquery.easing.1.3.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.0/moment.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  const accessKey = "u$raa9b70e044f1b6487fe3e3479bcbaa13";
+  const secretKey = "3b28bfbab8598d98824f2f393fc5ac71064a5cf7";
+</script>
+<style type="text/css">
+  /* width */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
 
-      /* Handle on hover */
-      ::-webkit-scrollbar-thumb:hover {
-        background: #555;
-      }
-      body {
-        font-family: Arial, Helvetica, sans-serif;
-        height: 640px;
-        width: 100% !important;
-      }
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        padding-top: 100px;
-        left: 0;
-        top: 0;
-        width: 100%;
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 640px;
+    width: 100% !important;
+  }
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
 
-        height: 100%;
-        overflow: auto;
-        background-color: rgb(0, 0, 0) !important;
-        background-color: rgba(0, 0, 0, 0.4) !important;
-      }
-      .modal-content {
-        background-color: #fefefe;
-        margin: auto;
-        border: 1px solid #888;
-        width: 100%;
-        max-width: 623px;
-        border-radius: 9px 9px 10px 10px;
-      }
-      .modal-header {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        background-color: #ed6d0f;
-        height: 64px;
-      }
-      .modal-header-text {
-        letter-spacing: 0px;
-        color: #ffffff;
-        opacity: 1;
-        font-size: 20px;
-        font-weight: bold;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-      }
-      .close {
-        color: #ffffff;
-        float: right;
-        font-size: 22px;
-        font-weight: bold;
-      }
-      .modal-body-text {
-        padding: 34px 27px;
-        letter-spacing: 0px;
-        color: #717171;
-        opacity: 1;
-        font-size: 20px;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-      }
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0) !important;
+    background-color: rgba(0, 0, 0, 0.4) !important;
+  }
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    border: 1px solid #888;
+    width: 100%;
+    max-width: 623px;
+    border-radius: 9px 9px 10px 10px;
+  }
+  .modal-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #ed6d0f;
+    height: 64px;
+  }
+  .modal-header-text {
+    letter-spacing: 0px;
+    color: #ffffff;
+    opacity: 1;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  }
+  .close {
+    color: #ffffff;
+    float: right;
+    font-size: 22px;
+    font-weight: bold;
+  }
+  .modal-body-text {
+    padding: 34px 27px;
+    letter-spacing: 0px;
+    color: #717171;
+    opacity: 1;
+    font-size: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  }
 
-      .close:hover,
-      .close:focus {
-        color: #ffffff;
-        text-decoration: none;
-        cursor: pointer;
-      }
+  .close:hover,
+  .close:focus {
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+  }
 
-      .email-preview-template-wrapper {
-        width: 100%;
-        background-color: #ffffff;
-      }
-      .email-preview-template-container {
-        width: 80%;
-        margin: 29px auto 45px auto;
-        background-color: #ffffff;
-        height: 475px;
-      }
-      .email-preview-tab-btn-container {
-        display: flex;
-        justify-content: center;
-      }
-      .btn-container {
-        height: 42px;
-        letter-spacing: 0px;
-        opacity: 1;
-        font-size: 16px;
-        padding-left: 20px;
-        padding-right: 30px;
-        padding-bottom: 12px;
-        padding-top: 12px;
-        background-color: #ffffff;
-        border: 1px solid #ffe6d5;
-        letter-spacing: 0px;
-        color: #707070;
-        opacity: 1;
-        border-radius: 5px 5px 0px 0px;
-      }
-      .btn-active {
-        background-color: #ed6d0f;
-        opacity: 1;
-        color: #ffffff;
-        pointer-events: none !important;
-      }
-      .SMS-btn-container {
-        margin: 0px 9px;
-      }
-      .preview-data-table-container {
-        width: 100%;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-      }
-      .preview-data-table-container {
-        border: 1px solid #ed6d0f;
-        border-radius: 10px !important;
-        opacity: 1;
-        background-color: #f7f7f7;
-        min-height: 433px;
-      }
-      .header-table-container {
-        display: flex;
-        width: 100%;
-        background-color: #ffdec9;
-        text-align: left;
-        letter-spacing: 0px;
-        color: #7c4825;
-        opacity: 1;
-        font-size: 16px;
-        font-weight: bold;
-        padding: 16px 0px;
-        margin-bottom: 9px !important;
-        border-radius: 10px 10px 0px 0px;
-      }
-      .icon-table-first-container {
-        background-color: #f89d58;
-        color: #ffffff;
-        height: 41px;
-        width: 41px;
-        border-radius: 60%;
-        text-align: center;
-        font-size: 25px;
-        margin: auto;
-        padding: auto;
-        line-height: 31px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .icon-container {
-        display: inline-block;
-        vertical-align: middle;
-        line-height: normal;
-      }
-      .header-table-first-container {
-        width: 10%;
-      }
-      .header-table-second-container {
-        width: 30%;
-      }
-      .header-table-third-container {
-        width: 56%;
-        display: flex;
-        align-items: center;
-      }
-      .body-table-container {
-        background-color: #ffffff;
-        display: flex;
-        width: 100%;
-        margin: 2px 10px !important;
-        padding-top: 19px;
-        padding-bottom: 24px;
-      }
-      .loader-body-table-container {
-        display: flex;
-        width: 80%;
-        margin: auto;
-        padding-top: 19px;
-        padding-bottom: 24px;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-      }
-      .main-body-table-container {
-        background-color: #f7f7f7;
-        max-height: 383px;
-        width: 98%;
-        overflow-x: hidden;
-        overflow-y: auto;
-        border-radius: 0px 0px 10px 10px;
-      }
-      .date-table-second-container {
-        letter-spacing: 0px;
-        color: #313131;
-        opacity: 1;
-        font-size: 16px;
-      }
-      .time-table-second-container {
-        letter-spacing: 0px;
-        color: #707070;
-        opacity: 1;
-        font-size: 14px;
-      }
-      .lable-table-second-container {
-        letter-spacing: 0px;
-        color: #606060;
-        font-size: 16px;
-      }
-      .link-table-second-container {
-        letter-spacing: 0px;
-        color: #e36c06;
-        font-size: 16px;
-        width: 55%;
-        cursor: pointer;
-        position: relative;
-        display: inline-block;
-        padding-left: 5px;
-      }
-      .link-table-second-container:hover {
-        text-decoration: underline;
-      }
-      .link-table-second-container .tooltiptext {
-        visibility: hidden;
-        min-width: 339px;
-        background-color: #4b4b4b;
-        color: #fff;
-        text-align: center;
-        border-radius: 6px;
-        padding: 8px;
-        white-space: pre-line;
-        position: absolute;
-        z-index: 100;
-        top: 150%;
-        left: 5%;
-        margin-left: -60px;
-        word-wrap: break-word;
-        box-shadow: 0px 3px 6px #00000029;
-        font: normal normal normal 14px/18px Lato;
-      }
+  .email-preview-template-wrapper {
+    width: 100%;
+    background-color: #ffffff;
+  }
+  .email-preview-template-container {
+    width: 80%;
+    margin: 29px auto 45px auto;
+    background-color: #ffffff;
+    height: 475px;
+  }
+  .email-preview-tab-btn-container {
+    display: flex;
+    justify-content: center;
+  }
+  .btn-container {
+    height: 42px;
+    letter-spacing: 0px;
+    opacity: 1;
+    font-size: 16px;
+    padding-left: 20px;
+    padding-right: 30px;
+    padding-bottom: 12px;
+    padding-top: 12px;
+    background-color: #ffffff;
+    border: 1px solid #ffe6d5;
+    letter-spacing: 0px;
+    color: #707070;
+    opacity: 1;
+    border-radius: 5px 5px 0px 0px;
+  }
+  .btn-active {
+    background-color: #ed6d0f;
+    opacity: 1;
+    color: #ffffff;
+    pointer-events: none !important;
+  }
+  .SMS-btn-container {
+    margin: 0px 9px;
+  }
+  .preview-data-table-container {
+    width: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  }
+  .preview-data-table-container {
+    border: 1px solid #ed6d0f;
+    border-radius: 10px !important;
+    opacity: 1;
+    background-color: #f7f7f7;
+    min-height: 433px;
+  }
+  .header-table-container {
+    display: flex;
+    width: 100%;
+    background-color: #ffdec9;
+    text-align: left;
+    letter-spacing: 0px;
+    color: #7c4825;
+    opacity: 1;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 16px 0px;
+    margin-bottom: 9px !important;
+    border-radius: 10px 10px 0px 0px;
+  }
+  .icon-table-first-container {
+    background-color: #f89d58;
+    color: #ffffff;
+    height: 41px;
+    width: 41px;
+    border-radius: 60%;
+    text-align: center;
+    font-size: 25px;
+    margin: auto;
+    padding: auto;
+    line-height: 31px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .icon-container {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+  }
+  .header-table-first-container {
+    width: 10%;
+  }
+  .header-table-second-container {
+    width: 30%;
+  }
+  .header-table-third-container {
+    width: 56%;
+    display: flex;
+    align-items: center;
+  }
+  .body-table-container {
+    background-color: #ffffff;
+    display: flex;
+    width: 100%;
+    margin: 2px 10px !important;
+    padding-top: 19px;
+    padding-bottom: 24px;
+  }
+  .loader-body-table-container {
+    display: flex;
+    width: 80%;
+    margin: auto;
+    padding-top: 19px;
+    padding-bottom: 24px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+  .main-body-table-container {
+    background-color: #f7f7f7;
+    max-height: 383px;
+    width: 98%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-radius: 0px 0px 10px 10px;
+  }
+  .date-table-second-container {
+    letter-spacing: 0px;
+    color: #313131;
+    opacity: 1;
+    font-size: 16px;
+  }
+  .time-table-second-container {
+    letter-spacing: 0px;
+    color: #707070;
+    opacity: 1;
+    font-size: 14px;
+  }
+  .lable-table-second-container {
+    letter-spacing: 0px;
+    color: #606060;
+    font-size: 16px;
+  }
+  .link-table-second-container {
+    letter-spacing: 0px;
+    color: #e36c06;
+    font-size: 16px;
+    width: 55%;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    padding-left: 5px;
+  }
+  .link-table-second-container:hover {
+    text-decoration: underline;
+  }
+  .link-table-second-container .tooltiptext {
+    visibility: hidden;
+    min-width: 339px;
+    background-color: #4b4b4b;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px;
+    white-space: pre-line;
+    position: absolute;
+    z-index: 100;
+    top: 150%;
+    left: 5%;
+    margin-left: -60px;
+    word-wrap: break-word;
+    box-shadow: 0px 3px 6px #00000029;
+    font: normal normal normal 14px/18px Lato;
+  }
 
-      .link-table-second-container .tooltiptext::after {
-        content: "";
-        position: absolute;
-        bottom: 100%;
-        left: 50%;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        box-shadow: 0px 3px 6px #00000029;
-        border-color: transparent transparent #4b4b4b transparent;
-      }
+  .link-table-second-container .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    box-shadow: 0px 3px 6px #00000029;
+    border-color: transparent transparent #4b4b4b transparent;
+  }
 
-      .link-table-second-container:hover .tooltiptext {
-        visibility: visible;
-      }
-      .email-content {
-        display: block;
-        width: 100%;
-        height: 100%;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      .email-content:hover {
-        text-decoration: underline;
-      }
+  .link-table-second-container:hover .tooltiptext {
+    visibility: visible;
+  }
+  .email-content {
+    display: block;
+    width: 100%;
+    height: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .email-content:hover {
+    text-decoration: underline;
+  }
 
-      #Email-btn {
-        outline: none;
-      }
-      #SMS-btn {
-        outline: none;
-      }
-      #WhatsApp-btn {
-        outline: none;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="myModal" class="modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <div class="modal-header-text" id="modal-header-text-id">SMS</div>
-          <div class="close">&times;</div>
-        </div>
-        <div class="modal-body-text">
-          <p id="messageBox"></p>
-        </div>
-      </div>
+  #Email-btn {
+    outline: none;
+  }
+  #SMS-btn {
+    outline: none;
+  }
+  #WhatsApp-btn {
+    outline: none;
+  }
+</style>
+
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="modal-header-text" id="modal-header-text-id">SMS</div>
+      <div class="close">&times;</div>
     </div>
-    <div class="email-preview-template-wrapper" id="EmailPreview">
-      <div class="email-preview-template-container">
-        <div class="email-preview-tab-btn-container">
-          <button
-            class="Email-btn-container btn-container"
-            onclick="emailFunction()"
-            id="Email-btn"
-          >
-            <i class="far fa-envelope"></i> Email
-          </button>
-          <button
-            class="SMS-btn-container btn-container"
-            onclick="smsFunction()"
-            id="SMS-btn"
-          >
-            <i class="fad fa-comments-alt"></i> SMS
-          </button>
-          <button
-            class="WhatsApp-btn-container btn-container"
-            onclick="whatsAppFunction()"
-            id="WhatsApp-btn"
-          >
-            <i class="fab fa-whatsapp"></i> WhatsApp
-          </button>
+    <div class="modal-body-text">
+      <p id="messageBox"></p>
+    </div>
+  </div>
+</div>
+<div class="email-preview-template-wrapper" id="EmailPreview">
+  <div class="email-preview-template-container">
+    <div class="email-preview-tab-btn-container">
+      <button
+        class="Email-btn-container btn-container"
+        onclick="emailFunction()"
+        id="Email-btn"
+      >
+        <i class="far fa-envelope"></i> Email
+      </button>
+      <button
+        class="SMS-btn-container btn-container"
+        onclick="smsFunction()"
+        id="SMS-btn"
+      >
+        <i class="fad fa-comments-alt"></i> SMS
+      </button>
+      <button
+        class="WhatsApp-btn-container btn-container"
+        onclick="whatsAppFunction()"
+        id="WhatsApp-btn"
+      >
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </button>
+    </div>
+    <div class="preview-data-container">
+      <div class="preview-data-table-container">
+        <div class="header-table-container">
+          <div class="header-table-first-container"></div>
+          <div class="header-table-second-container">Date / Time</div>
+          <div class="header-table-third-container">Subject</div>
         </div>
-        <div class="preview-data-container">
-          <div class="preview-data-table-container">
-            <div class="header-table-container">
-              <div class="header-table-first-container"></div>
-              <div class="header-table-second-container">Date / Time</div>
-              <div class="header-table-third-container">Subject</div>
-            </div>
-            <div
-              class="main-body-table-container"
-              id="main-body-table-container-id"
-            >
-              <div
-                class="loader-body-table-container"
-                id="loader-body-table-container-id"
-              >
-                <div class="spinner-border text-dark"></div>
-              </div>
-            </div>
+        <div
+          class="main-body-table-container"
+          id="main-body-table-container-id"
+        >
+          <div
+            class="loader-body-table-container"
+            id="loader-body-table-container-id"
+          >
+            <div class="spinner-border text-dark"></div>
           </div>
         </div>
       </div>
-      <script>
-        function extractDate(date) {
-          const formattedDate = date.split(" ")[0];
-          return moment(formattedDate, "Y-M-D").format("MMM D ,Y");
-        }
-        function extractTime(time) {
-          const formattedTime = time.split(" ")[1];
-          return moment(formattedTime, "hh:mm:ss").format("hh:mm A");
-        }
-        function emailFunction() {
-          document.getElementById(
-            "loader-body-table-container-id"
-          ).style.display = "block";
-          var emailBtn = document.getElementById("Email-btn");
-          emailBtn.classList.add("btn-active");
-          var whatsAppBtn = document.getElementById("WhatsApp-btn");
-          whatsAppBtn.classList.remove("btn-active");
-          var smsBtn = document.getElementById("SMS-btn");
-          smsBtn.classList.remove("btn-active");
-          var divTopTagRemove = document.getElementById(
-            "data-body-table-container-id"
-          );
-          if (divTopTagRemove) {
-            divTopTagRemove.remove();
-          }
+    </div>
+  </div>
+  <script>
+    function extractDate(date) {
+      const formattedDate = date.split(" ")[0];
+      return moment(formattedDate, "Y-M-D").format("MMM D ,Y");
+    }
+    function extractTime(time) {
+      const formattedTime = time.split(" ")[1];
+      return moment(formattedTime, "hh:mm:ss").format("hh:mm A");
+    }
+    function emailFunction() {
+      document.getElementById("loader-body-table-container-id").style.display =
+        "block";
+      var emailBtn = document.getElementById("Email-btn");
+      emailBtn.classList.add("btn-active");
+      var whatsAppBtn = document.getElementById("WhatsApp-btn");
+      whatsAppBtn.classList.remove("btn-active");
+      var smsBtn = document.getElementById("SMS-btn");
+      smsBtn.classList.remove("btn-active");
+      var divTopTagRemove = document.getElementById(
+        "data-body-table-container-id"
+      );
+      if (divTopTagRemove) {
+        divTopTagRemove.remove();
+      }
 
-          if (leadID !== "") {
-            fetch(
-              `https://api-in21.leadsquared.com/v2/ProspectActivity.svc/Retrieve?accessKey=${accessKey}&secretKey=${secretKey}&leadId=${leadID}`,
-              {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  Parameter: {
-                    ActivityEvent: 2001,
-                  },
-                }),
+      if ("@{Global:Lead:-1:ProspectID,}" !== "") {
+        fetch(
+          `https://api-in21.leadsquared.com/v2/ProspectActivity.svc/Retrieve?accessKey=${accessKey}&secretKey=${secretKey}&leadId=@{Global:Lead:-1:ProspectID,}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              Parameter: {
+                ActivityEvent: 2001,
+              },
+            }),
+          }
+        )
+          .then((responseData) => responseData.json())
+          .then((data) => {
+            if (data) {
+              var divTopTagRemoveAPI = document.getElementById(
+                "data-body-table-container-id"
+              );
+              if (divTopTagRemoveAPI) {
+                divTopTagRemoveAPI.remove();
               }
-            )
-              .then((responseData) => responseData.json())
-              .then((data) => {
-                if (data) {
-                  var divTopTagRemoveAPI = document.getElementById(
-                    "data-body-table-container-id"
-                  );
-                  if (divTopTagRemoveAPI) {
-                    divTopTagRemoveAPI.remove();
-                  }
-                  const recordCount = data.RecordCount;
-                  const dataActivities = data.ProspectActivities;
-                  var divTopTagAdd = document.createElement("div");
-                  divTopTagAdd.id = `data-body-table-container-id`;
-                  divTopTagAdd.innerHTML = ``;
-                  document
-                    .getElementById("main-body-table-container-id")
-                    .appendChild(divTopTagAdd);
-                  if (recordCount > 0) {
-                    dataActivities.map((dataMap, index) => {
-                      var divTag = document.createElement("div");
-                      divTag.id = `body-table-container-id-${index}`;
-                      divTag.innerHTML = `
+              const recordCount = data.RecordCount;
+              const dataActivities = data.ProspectActivities;
+              var divTopTagAdd = document.createElement("div");
+              divTopTagAdd.id = `data-body-table-container-id`;
+              divTopTagAdd.innerHTML = ``;
+              document
+                .getElementById("main-body-table-container-id")
+                .appendChild(divTopTagAdd);
+              if (recordCount > 0) {
+                dataActivities.map((dataMap, index) => {
+                  var divTag = document.createElement("div");
+                  divTag.id = `body-table-container-id-${index}`;
+                  divTag.innerHTML = `
                                 <div class="body-table-container">
                                     <div class="header-table-first-container" id="header-table-first-container-id-${index}">
                                         <div class="icon-table-first-container">
@@ -450,11 +437,11 @@
                                     </div>
                                     <div class="header-table-second-container" id="header-table-second-container-id-${index}">
                                             <span class="date-table-second-container" id="date-table-second-container-id-${index}">${extractDate(
-                        dataMap.CreatedOn
-                      )}</span> <br/>
+                    dataMap.CreatedOn
+                  )}</span> <br/>
                                             <span class="time-table-second-container" id="time-table-second-container-id-${index}">${extractTime(
-                        dataMap.CreatedOn
-                      )}</span>
+                    dataMap.CreatedOn
+                  )}</span>
                                     </div>
                                     <div class="header-table-third-container" id="header-table-third-container-id-${index}">
                                             <span class="lable-table-second-container">Email having subject line :</span>
@@ -478,89 +465,92 @@
                                     </div>
                                 </div>
                                 `;
-                      document
-                        .getElementById("data-body-table-container-id")
-                        .appendChild(divTag);
-                      document.getElementById(
-                        "loader-body-table-container-id"
-                      ).style.display = "none";
-                    });
-                  }
-                }
-              })
-              .catch((error) => {
-                console.error("Error:", error);
-                alert("Something Went Wrong!!!");
-                window.location.href = `/`;
-              });
-          } else {
-            alert("Something Went Wrong!!!");
-            window.location.href = `/signup/Dashboard`;
-          }
-        }
-        emailFunction();
-      </script>
-
-      <script>
-        function smsFunction() {
-          document.getElementById(
-            "loader-body-table-container-id"
-          ).style.display = "block";
-          var emailBtn = document.getElementById("Email-btn");
-          emailBtn.classList.remove("btn-active");
-          var whatsAppBtn = document.getElementById("WhatsApp-btn");
-          whatsAppBtn.classList.remove("btn-active");
-          var smsBtn = document.getElementById("SMS-btn");
-          smsBtn.classList.add("btn-active");
-          var divTopTagRemove = document.getElementById(
-            "data-body-table-container-id"
-          );
-          if (divTopTagRemove) {
-            divTopTagRemove.remove();
-          }
-
-          if (leadID !== "") {
-            fetch(
-              `https://api-in21.leadsquared.com/v2/ProspectActivity.svc/Retrieve?accessKey=${accessKey}&secretKey=${secretKey}&leadId=${leadID}`,
-              {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  Parameter: {
-                    ActivityEvent: 163,
-                  },
-                }),
-              }
-            )
-              .then((responseData) => responseData.json())
-              .then((data) => {
-                if (data) {
-                  var divTopTagRemoveAPI = document.getElementById(
-                    "data-body-table-container-id"
-                  );
-                  if (divTopTagRemoveAPI) {
-                    divTopTagRemoveAPI.remove();
-                  }
-                  const recordCount = data.RecordCount;
-                  const dataActivities = data.ProspectActivities;
-                  var divTopTagAdd = document.createElement("div");
-                  divTopTagAdd.id = `data-body-table-container-id`;
-                  divTopTagAdd.innerHTML = ``;
                   document
-                    .getElementById("main-body-table-container-id")
-                    .appendChild(divTopTagAdd);
-                  if (recordCount > 0) {
-                    dataActivities.map((dataMap, index) => {
-                      var msg = dataMap.Data
-                        ? dataMap.Data[2]
-                          ? dataMap.Data[2].Value
-                          : ""
-                        : "";
-                      var divTag = document.createElement("div");
-                      divTag.id = `body-table-container-id-${index}`;
-                      divTag.innerHTML = `
+                    .getElementById("data-body-table-container-id")
+                    .appendChild(divTag);
+                  document.getElementById(
+                    "loader-body-table-container-id"
+                  ).style.display = "none";
+                });
+              } else {
+                document.getElementById(
+                  "loader-body-table-container-id"
+                ).style.display = "none";
+              }
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            alert("Something Went Wrong!!!");
+            window.location.href = `/`;
+          });
+      } else {
+        alert("Something Went Wrong!!!");
+        window.location.href = `/signup/Dashboard`;
+      }
+    }
+    emailFunction();
+  </script>
+
+  <script>
+    function smsFunction() {
+      document.getElementById("loader-body-table-container-id").style.display =
+        "block";
+      var emailBtn = document.getElementById("Email-btn");
+      emailBtn.classList.remove("btn-active");
+      var whatsAppBtn = document.getElementById("WhatsApp-btn");
+      whatsAppBtn.classList.remove("btn-active");
+      var smsBtn = document.getElementById("SMS-btn");
+      smsBtn.classList.add("btn-active");
+      var divTopTagRemove = document.getElementById(
+        "data-body-table-container-id"
+      );
+      if (divTopTagRemove) {
+        divTopTagRemove.remove();
+      }
+
+      if ("@{Global:Lead:-1:ProspectID,}" !== "") {
+        fetch(
+          `https://api-in21.leadsquared.com/v2/ProspectActivity.svc/Retrieve?accessKey=${accessKey}&secretKey=${secretKey}&leadId=@{Global:Lead:-1:ProspectID,}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              Parameter: {
+                ActivityEvent: 163,
+              },
+            }),
+          }
+        )
+          .then((responseData) => responseData.json())
+          .then((data) => {
+            if (data) {
+              var divTopTagRemoveAPI = document.getElementById(
+                "data-body-table-container-id"
+              );
+              if (divTopTagRemoveAPI) {
+                divTopTagRemoveAPI.remove();
+              }
+              const recordCount = data.RecordCount;
+              const dataActivities = data.ProspectActivities;
+              var divTopTagAdd = document.createElement("div");
+              divTopTagAdd.id = `data-body-table-container-id`;
+              divTopTagAdd.innerHTML = ``;
+              document
+                .getElementById("main-body-table-container-id")
+                .appendChild(divTopTagAdd);
+              if (recordCount > 0) {
+                dataActivities.map((dataMap, index) => {
+                  var msg = dataMap.Data
+                    ? dataMap.Data[2]
+                      ? dataMap.Data[2].Value
+                      : ""
+                    : "";
+                  var divTag = document.createElement("div");
+                  divTag.id = `body-table-container-id-${index}`;
+                  divTag.innerHTML = `
                                 <div class="body-table-container">
                                     <div class="header-table-first-container" id="header-table-first-container-id-${index}">
                                         <div class="icon-table-first-container">
@@ -569,11 +559,11 @@
                                     </div>
                                     <div class="header-table-second-container" id="header-table-second-container-id-${index}">
                                             <span class="date-table-second-container" id="date-table-second-container-id-${index}">${extractDate(
-                        dataMap.CreatedOn
-                      )}</span> <br/>
+                    dataMap.CreatedOn
+                  )}</span> <br/>
                                             <span class="time-table-second-container" id="time-table-second-container-id-${index}">${extractTime(
-                        dataMap.CreatedOn
-                      )}</span>
+                    dataMap.CreatedOn
+                  )}</span>
                                     </div>
                                     <div class="header-table-third-container" id="header-table-third-container-id-${index}">
                                             <span class="lable-table-second-container">SMS having Template : </span>
@@ -582,86 +572,89 @@
                                     </div>
                                 </div>
                                 `;
-                      document
-                        .getElementById("data-body-table-container-id")
-                        .appendChild(divTag);
-                      document.getElementById(
-                        "loader-body-table-container-id"
-                      ).style.display = "none";
-                    });
-                  }
-                }
-              })
-              .catch((error) => {
-                console.error("Error:", error);
-                alert("Something Went Wrong!!!");
-                window.location.href = `/`;
-              });
-          } else {
-            alert("Something Went Wrong!!!");
-            window.location.href = `/signup/Dashboard`;
-          }
-        }
-      </script>
-      <script>
-        function whatsAppFunction() {
-          document.getElementById(
-            "loader-body-table-container-id"
-          ).style.display = "block";
-          var emailBtn = document.getElementById("Email-btn");
-          emailBtn.classList.remove("btn-active");
-          var whatsAppBtn = document.getElementById("WhatsApp-btn");
-          whatsAppBtn.classList.add("btn-active");
-          var smsBtn = document.getElementById("SMS-btn");
-          smsBtn.classList.remove("btn-active");
-          var divTopTagRemove = document.getElementById(
-            "data-body-table-container-id"
-          );
-          if (divTopTagRemove) {
-            divTopTagRemove.remove();
-          }
-          if (leadID !== "") {
-            fetch(
-              `https://api-in21.leadsquared.com/v2/ProspectActivity.svc/Retrieve?accessKey=${accessKey}&secretKey=${secretKey}&leadId=${leadID}`,
-              {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  Parameter: {
-                    ActivityEvent: 161,
-                  },
-                }),
-              }
-            )
-              .then((responseData) => responseData.json())
-              .then((data) => {
-                if (data) {
-                  var divTopTagRemoveAPI = document.getElementById(
-                    "data-body-table-container-id"
-                  );
-                  if (divTopTagRemoveAPI) {
-                    divTopTagRemoveAPI.remove();
-                  }
-                  const recordCount = data.RecordCount;
-                  const dataActivities = data.ProspectActivities;
-                  var divTopTagAdd = document.createElement("div");
-                  divTopTagAdd.id = `data-body-table-container-id`;
-                  divTopTagAdd.innerHTML = ``;
                   document
-                    .getElementById("main-body-table-container-id")
-                    .appendChild(divTopTagAdd);
-                  if (recordCount > 0) {
-                    dataActivities.map((dataMap, index) => {
-                      var msg = dataMap.Data
-                        ? dataMap.Data[2]
-                          ? dataMap.Data[2].Value
-                          : ""
-                        : "";
-                      var divTag = document.createElement("div");
-                      divTag.id = `body-table-container-id-${index}`;
-                      divTag.innerHTML = `
+                    .getElementById("data-body-table-container-id")
+                    .appendChild(divTag);
+                  document.getElementById(
+                    "loader-body-table-container-id"
+                  ).style.display = "none";
+                });
+              } else {
+                document.getElementById(
+                  "loader-body-table-container-id"
+                ).style.display = "none";
+              }
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            alert("Something Went Wrong!!!");
+            window.location.href = `/`;
+          });
+      } else {
+        alert("Something Went Wrong!!!");
+        window.location.href = `/signup/Dashboard`;
+      }
+    }
+  </script>
+  <script>
+    function whatsAppFunction() {
+      document.getElementById("loader-body-table-container-id").style.display =
+        "block";
+      var emailBtn = document.getElementById("Email-btn");
+      emailBtn.classList.remove("btn-active");
+      var whatsAppBtn = document.getElementById("WhatsApp-btn");
+      whatsAppBtn.classList.add("btn-active");
+      var smsBtn = document.getElementById("SMS-btn");
+      smsBtn.classList.remove("btn-active");
+      var divTopTagRemove = document.getElementById(
+        "data-body-table-container-id"
+      );
+      if (divTopTagRemove) {
+        divTopTagRemove.remove();
+      }
+      if ("@{Global:Lead:-1:ProspectID,}" !== "") {
+        fetch(
+          `https://api-in21.leadsquared.com/v2/ProspectActivity.svc/Retrieve?accessKey=${accessKey}&secretKey=${secretKey}&leadId=@{Global:Lead:-1:ProspectID,}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              Parameter: {
+                ActivityEvent: 161,
+              },
+            }),
+          }
+        )
+          .then((responseData) => responseData.json())
+          .then((data) => {
+            if (data) {
+              var divTopTagRemoveAPI = document.getElementById(
+                "data-body-table-container-id"
+              );
+              if (divTopTagRemoveAPI) {
+                divTopTagRemoveAPI.remove();
+              }
+              const recordCount = data.RecordCount;
+              const dataActivities = data.ProspectActivities;
+              var divTopTagAdd = document.createElement("div");
+              divTopTagAdd.id = `data-body-table-container-id`;
+              divTopTagAdd.innerHTML = ``;
+              document
+                .getElementById("main-body-table-container-id")
+                .appendChild(divTopTagAdd);
+              if (recordCount > 0) {
+                dataActivities.map((dataMap, index) => {
+                  var msg = dataMap.Data
+                    ? dataMap.Data[2]
+                      ? dataMap.Data[2].Value
+                      : ""
+                    : "";
+                  var divTag = document.createElement("div");
+                  divTag.id = `body-table-container-id-${index}`;
+                  divTag.innerHTML = `
                                        <div class="body-table-container">
                                            <div class="header-table-first-container" id="header-table-first-container-id-${index}">
                                                <div class="icon-table-first-container">
@@ -670,11 +663,11 @@
                                            </div>
                                            <div class="header-table-second-container" id="header-table-second-container-id-${index}">
                                                    <span class="date-table-second-container" id="date-table-second-container-id-${index}">${extractDate(
-                        dataMap.CreatedOn
-                      )}</span> <br/>
+                    dataMap.CreatedOn
+                  )}</span> <br/>
                                                    <span class="time-table-second-container" id="time-table-second-container-id-${index}">${extractTime(
-                        dataMap.CreatedOn
-                      )}</span>
+                    dataMap.CreatedOn
+                  )}</span>
                                            </div>
                                            <div class="header-table-third-container" id="header-table-third-container-id-${index}">
                                                    <span class="lable-table-second-container">Whatsapp having Template : </span>
@@ -683,63 +676,64 @@
                                            </div>
                                        </div>
                                        `;
-                      document
-                        .getElementById("data-body-table-container-id")
-                        .appendChild(divTag);
-                      document.getElementById(
-                        "loader-body-table-container-id"
-                      ).style.display = "none";
-                    });
-                  }
-                }
-              })
-              .catch((error) => {
-                console.error("Error:", error);
-                alert("Something Went Wrong!!!");
-                window.location.href = `/`;
-              });
-          } else {
-            alert("Something Went Wrong!!!");
-            window.location.href = `/signup/Dashboard`;
-          }
-        }
-      </script>
-      <script>
-        function modalFunction(messageID, type) {
-          modal.style.display = "block";
-          document.getElementById("messageBox").textContent = "";
-          var message = document.getElementById(`${messageID}`).textContent;
-          if (type === "whatsApp") {
-            if (message) {
-              var showMessageData = message.split(" : ")[1];
-              document.getElementById("messageBox").textContent =
-                showMessageData;
-              //   document.getElementById(
-              //     "modal-header-text-id"
-              //   ).textContent = `WhatsApp`;
-              const element = document.getElementById("modal-header-text-id");
-              element.innerHTML = `<i class="fab fa-whatsapp"></i> WhatsApp`;
+                  document
+                    .getElementById("data-body-table-container-id")
+                    .appendChild(divTag);
+                  document.getElementById(
+                    "loader-body-table-container-id"
+                  ).style.display = "none";
+                });
+              } else {
+                document.getElementById(
+                  "loader-body-table-container-id"
+                ).style.display = "none";
+              }
             }
-          } else {
-            document.getElementById("messageBox").textContent = message;
-            const element = document.getElementById("modal-header-text-id");
-            element.innerHTML = `<i class="fad fa-comments-alt"></i> SMS`;
-            // document.getElementById("modal-header-text-id").textContent = `SMS`;
-          }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            alert("Something Went Wrong!!!");
+            window.location.href = `/`;
+          });
+      } else {
+        alert("Something Went Wrong!!!");
+        window.location.href = `/signup/Dashboard`;
+      }
+    }
+  </script>
+  <script>
+    function modalFunction(messageID, type) {
+      modal.style.display = "block";
+      document.getElementById("messageBox").textContent = "";
+      var message = document.getElementById(`${messageID}`).textContent;
+      if (type === "whatsApp") {
+        if (message) {
+          var showMessageData = message.split(" : ")[1];
+          document.getElementById("messageBox").textContent = showMessageData;
+          //   document.getElementById(
+          //     "modal-header-text-id"
+          //   ).textContent = `WhatsApp`;
+          const element = document.getElementById("modal-header-text-id");
+          element.innerHTML = `<i class="fab fa-whatsapp"></i> WhatsApp`;
         }
-      </script>
-      <script>
-        var modal = document.getElementById("myModal");
-        var span = document.getElementsByClassName("close")[0];
-        span.onclick = function () {
-          modal.style.display = "none";
-        };
-        window.onclick = function (event) {
-          if (event.target == modal) {
-            modal.style.display = "none";
-          }
-        };
-      </script>
-    </div>
-  </body>
-</html>
+      } else {
+        document.getElementById("messageBox").textContent = message;
+        const element = document.getElementById("modal-header-text-id");
+        element.innerHTML = `<i class="fad fa-comments-alt"></i> SMS`;
+        // document.getElementById("modal-header-text-id").textContent = `SMS`;
+      }
+    }
+  </script>
+  <script>
+    var modal = document.getElementById("myModal");
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function () {
+      modal.style.display = "none";
+    };
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script>
+</div>
